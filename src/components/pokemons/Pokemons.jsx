@@ -45,6 +45,15 @@ function Pokemon({searchQuery}) {
     };
 }, []);
 
+    {pokemon?.map((pokemon) => (
+
+        return
+
+        <Pokemon
+            searchQuery={pokemon.name}
+        />
+    ))}
+
     return (
         <>
 
