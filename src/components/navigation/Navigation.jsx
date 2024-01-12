@@ -3,21 +3,20 @@ import Button from '../button/Button.jsx';
 
 
 
-function Navigation() {
+function Navigation({disabledPrevious, clickHandlerPrevious, disabledNext, clickHandlerNext}) {
 
     return (
         <section className="button-navigation">
             <Button
-                disabled={!pokemon.previous}
-                clickHandler={() => setSearchQuery("null")}
-            >
-                Previous
+                disabled={disabledPrevious}
+                clickHandler={clickHandlerPrevious}
+            >Previous
             </Button>
+
             <Button
-                disabled={!pokemon.next}
-                clickHandler={() => setSearchQuery("?limit=20&offset=20")}
-            >
-                Next
+                disabled={disabledNext}
+                clickHandler={clickHandlerNext}
+            >Next
             </Button>
         </section>
     );

@@ -1,8 +1,10 @@
 .prev-next-button {
     width: 100px;
     padding: 12px 24px;
-    background: #213547;
+    background: #004B94;
     border-radius: 15px;
+    color:white;
+    text-align: center;
 }
 
 .prev-next-button:disabled {
@@ -10,7 +12,7 @@
 }
 
 .prev-next-button:hover {
-    background: slategray;
+    background: #004B94;
 }
 
 .prev-next-button + .prev-next-button {

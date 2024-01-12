@@ -1,52 +1,40 @@
 import './App.css'
-import Pokemon from "./components/pokemon/Pokemon.jsx";
-import Navigation from "./components/navigation/Navigation.jsx";
-import pokemon from "./components/pokemon/Pokemon.jsx";
+import Pokemons from "./components/pokemons/Pokemons.jsx";
+import logo from "./assets/Pokemon_logo.png";
 
 function App() {
 
     return <>
         <header className="outer-content-container">
-                <div className="inner-content-container">
+                <div className="inner-content-container header-section">
                     <img
-                        src="https://nl.vecteezy.com/vector-kunst/29167297-pokemon-logo-ontwerp"
+                        src={logo}
                         alt="pokemon logo"
-                        width="420px"/>
+                        width="240px"/>
                 </div>
         </header>
-        <nav>
-            <Navigation />
-        </nav>
 
         <main>
 
             <section className="outer-content-container">
-                <div className="inner-content-container">
-                    <Pokemon
+                <div className="inner-content-container pokemon-single-pokemon">
+                    <Pokemons
                         searchQuery="ditto"
                     />
                 </div>
             </section>
 
             <section className="outer-content-container">
-                <div className="inner-content-container">
-
-                    {pokemon?.map((pokemon) => (
-
-                    return
-
-                    <Pokemon
-                    searchQuery={pokemon.name}
-                     />
-                ))}
-
+                <div className="inner-content-container pokemon-deck">
+                        <Pokemons
+                            searchQuery=" "
+                        />
                     </div>
             </section>
 
         </main>
 
     </>
-  )
 }
 
 export default App

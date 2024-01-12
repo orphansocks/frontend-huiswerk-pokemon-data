@@ -1,9 +1,9 @@
 import './Button.css';
 
-function Button({ clickHandler, disabled, type = "button" }) {
+function Button({ clickHandler, disabled }) {
     return (
         <button
-            type={type}
+            type="button"
             className="prev-next-button"
             onClick={clickHandler}
             disabled={disabled}

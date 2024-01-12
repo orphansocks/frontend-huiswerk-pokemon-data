@@ -1,84 +1,101 @@
 import { useState, useEffect} from "react";
 import axios from "axios";
-import './Pokemon.css'
+import './Pokemons.css'
+import PokemonCard from "../pokemonCard/PokemonCard.jsx";
+import Navigation from "../navigation/Navigation.jsx";
 
-function Pokemon({searchQuery}) {
+
+function Pokemons({searchQuery}) {
     const [pokemon, setPokemon] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
     const [endpoint, setEndpoint] = useState(`https://pokeapi.co/api/v2/pokemon/${searchQuery}`);
 
 
+    // START USE EFFECT
     useEffect(() => {
         const abortController = new AbortController();
 
 
-    // DE FUNCTIE OM DE POKEMONS OP TE HALEN VANAF DE ENDPOINT
-    // MET EEN TRY CATCH FINALLY BLOCK
-    async function fetchPokemon() {
+        // DE FUNCTIE OM DE DATA OP TE HALEN VANAF DE ENDPOINT
+        // MET EEN TRY CATCH FINALLY BLOCK
+        async function fetchData() {
 
-        setIsLoading(true);
-        setError(false);
+            setIsLoading(true);
+            setError(false);
 
-        try {
-            const { data } = await axios.get(endpoint, {
-                signal: abortController.signal,
-            });
+            try {
+                const {data} = await axios.get(endpoint, {
+                    signal: abortController.signal,
+                });
 
-            console.log(data);
-            setPokemon(data);
+                console.log(data);
+                setPokemon(data);
 
-        } catch (error) {
+            } catch (error) {
 
-            setError("Something went wrong");
-        } finally {
-            setIsLoading(false);
+                setError("Something went wrong");
+            } finally {
+                setIsLoading(false);
+            }
+
         }
 
-    }
+        fetchData();
 
-    fetchPokemon();
+        return () => {
+            console.log("Clean up");
+            abortController.abort();
+        };
 
-    return () => {
-        console.log("Clean up");
-        abortController.abort();
-    };
-}, []);
+    }, [searchQuery]);
 
-    {pokemon?.map((pokemon) => (
+    // HIET STOPT HET USEEFFECT BLOCK
 
-        return
 
-        <Pokemon
-            searchQuery={pokemon.name}
-        />
-    ))}
-
+// HIER START DE SECTION DIE TERUG GEGEVEN WORDT
+    // DE BUTTONS EN DE POKEMONKAART WORDEN OPGEHAALD
     return (
-        <>
+        <div>
 
-              <article className="pokemon-card">
-                  <h2>{pokemon.name}</h2>
-                  <img
-                      src={pokemon.sprites.front_default}
-                      alt={pokemon.name}/>
-                  <p>Moves: {pokemon.moves.length}</p>
-                  <p>Weight: {pokemon.weight}</p>
-                  <p>Abilities: </p>
-                    <ul>
-                    {pokemon.abilities.map((ability) => {
+            <h2>This is your Pokemon Deck</h2>
+            {isLoading && <h2> Loading ...</h2>}
+            {error && <h2>{error}</h2>}
+
+            <Navigation
+                disabledPrevious={!pokemon.previous}
+                clickHandlerPrevious={() => setEndpoint(pokemon.previous)}
+                disabledNext={!pokemon.next}
+                clickHandlerNext={() => setEndpoint(pokemon.next)}
+            />
+
+            {pokemon.length > 0 &&
+
+                <ul>
+                    {pokemon?.map((pokemon) => {
                         return (
-                            <li key={`${ability.ability.name}-${pokemon.name}`}>
-                                {ability.ability.name}
-                            </li>
+                            <PokemonCard
+                                key={index}
+                                name={pokemon.name}
+                                img={pokemon.sprites.front_default}
+                                moves={pokemon.moves.length}
+                                weight={pokemon.weight}
+                                abilities="abilities"
+                            />
                         )
                     })}
-                    </ul>
-              </article>
 
-        </>
-    )
+                </ul>
 
+            }
+
+
+
+        </div>
+
+    );
 }
 
-export default Pokemon
+
+
+export default Pokemons;
