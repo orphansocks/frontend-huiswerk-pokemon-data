@@ -17,17 +17,9 @@ function App() {
         <main>
 
             <section className="outer-content-container">
-                <div className="inner-content-container pokemon-single-pokemon">
-                    <Pokemons
-                        searchQuery="ditto"
-                    />
-                </div>
-            </section>
-
-            <section className="outer-content-container">
-                <div className="inner-content-container pokemon-deck">
+                <div className="inner-content-container">
                         <Pokemons
-                            searchQuery=" "
+                           endpoint="https://pokeapi.co/api/v2/pokemon/"
                         />
                     </div>
             </section>
