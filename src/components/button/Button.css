@@ -1,0 +1,20 @@
+.prev-next-button {
+    width: 100px;
+    padding: 12px 24px;
+    background: #004B94;
+    border-radius: 15px;
+    color:white;
+    text-align: center;
+}
+
+.prev-next-button:disabled {
+    background: lightgrey;
+}
+
+.prev-next-button:hover {
+    background: #004B94;
+}
+
+.prev-next-button + .prev-next-button {
+    margin-left: 12px;
+}

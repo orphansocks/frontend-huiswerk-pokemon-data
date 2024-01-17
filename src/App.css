@@ -1,1 +1,37 @@
-/*Schrijf hier jouw eigen CSS!*/
+/* DE OUTER CONTAINER IS ALTIJD 100% SCHERMBREEDTE EN CENTREERT DE BINNENSTE CONTENT */
+.outer-content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:flex-start;
+    background-color: #8AC6DF;
+
+}
+
+/*DE BINNENSTE CONTAINER HEEFT EEN x BREEDTE ZODAT DE CONTENT NIET ZOVER WORDT UITGEREKT OP EEN
+SUPPER BREED SCHERM. DE CONTAINER MAG KRIMPEN EN NIET UITZETTEN*/
+.inner-content-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 1400px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin: 0 30px;
+    padding: 60px 0;
+    background-color: #FFCB02;
+
+}
+
+.header-section {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 1400px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin: 0 30px;
+    padding: 60px 0;
+    background-color: white;
+    align-items:center
+
+}
