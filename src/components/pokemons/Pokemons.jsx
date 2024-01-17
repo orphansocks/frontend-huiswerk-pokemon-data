@@ -85,25 +85,20 @@ function Pokemons({endpoint}) {
                 clickHandlerNext={() => setEndpoint(pokemon.next)}
             />
 
-            {pokemon.length > 0 &&
-
-                <ul>
-                    {pokemon.map((pokemon) => {
-                        return (
-                            <PokemonCard
-                                key={index}
-                                name={pokemon.name}
-                                img={pokemon.sprites.front_default}
-                                moves={pokemon.moves.length}
-                                weight={pokemon.weight}
-                                abilities="abilities"
-                            />
-                        )
-                    })}
-
-                </ul>
-
-            }
+            <ul>
+                {pokemon.map((pokemon) => {
+                    return (
+                        <PokemonCard
+                               key={index}
+                               name={pokemon.name}
+                               img={pokemon.sprites.front_default}
+                               moves={pokemon.moves.length}
+                               weight={pokemon.weight}
+                               abilities="abilities"
+                        />
+                    )
+                })}
+            </ul>
 
 
 
